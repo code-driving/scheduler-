@@ -17,7 +17,7 @@ export default function InterviewerListItem (props) {
       src={props.avatar}
       alt="Interviewers name"
     />
-    {props.name}
+    {props.selected && props.name}
   </li>
   );
 }

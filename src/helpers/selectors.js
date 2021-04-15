@@ -1,4 +1,4 @@
-export default function getAppointmentsForDay(state, day) {
+export function getAppointmentsForDay (state, day) {
   //... returns an array of appointments for that day
   let infoForDay = state.days.find((obj) => obj.name === day);
   if (!infoForDay) {
@@ -16,3 +16,15 @@ export default function getAppointmentsForDay(state, day) {
   });
   return result;
 }
+
+export const getInterview = (state, interview) => {
+  if (!interview) {
+    return null;
+  }
+  const interviewData = {
+    ...interview,
+    interviewer: { ...state.interviewers[interview.interviewer] },
+  };
+  return interviewData;
+};
+

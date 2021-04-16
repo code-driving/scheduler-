@@ -28,3 +28,17 @@ export const getInterview = (state, interview) => {
   return interviewData;
 };
 
+export const getInterviewersForDay = (state, day) => {
+  let infoForDay = state.days.find((obj) => obj.name === day);
+  if (!infoForDay) {
+    return [];
+  }
+  const interviewersForDay = infoForDay.interviewers
+  if (!interviewersForDay) {
+    return []
+  }
+  const interviews = interviewersForDay.map(interviewerId => state.interviewers[interviewerId])
+  
+  return interviews;
+}
+

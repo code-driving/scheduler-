@@ -62,6 +62,7 @@ export default function useApplicationData(props) {
       });
     });
   }
+
   return {
     state,
     setDay,

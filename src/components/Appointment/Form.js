@@ -50,16 +50,6 @@ export default function Form(props) {
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          {/* <Button danger onClick={cancel}>
-            Cancel
-          </Button>
-          <Button
-            confirm
-            onSubmit={(event) => event.preventDefault()}
-            onClick={validate}
-          >
-            Save
-          </Button> */}
           <Button onClick={cancel} danger>
             Cancel
           </Button>
@@ -72,3 +62,14 @@ export default function Form(props) {
     </main>
   );
 }
+
+{/* <Button danger onClick={cancel}>
+  Cancel
+</Button>
+<Button
+  confirm
+  onSubmit={(event) => event.preventDefault()}
+  onClick={validate}
+>
+  Save
+</Button> */}

@@ -26,42 +26,18 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
-  useEffect(() => {
-    if (props.interview && mode === EMPTY) {
-      transition(SHOW);
-    }
-    if (props.interview === null && mode === SHOW) {
-      transition(EMPTY);
-    }
-  }, [mode, transition, props.interview]);
-
-  // function save(name, interviewer) {
-  //   if (name && interviewer) {
-  //     transition(SAVING);
-  //   }
-
-  //   const interview = {
-  //     student: name,
-  //     interviewer,
-  //   };
-
-  //   props
-  //     .bookInterview(props.id, interview)
-  //     .then(() => transition(SHOW))
-  //     .catch((error) => transition(ERROR_SAVE, true));
-  // }
   function save(name, interviewer) {
     const interview = {
       student: name,
-      interviewer
+      interviewer,
     };
-  
+
     transition(SAVING);
-  
+
     props
       .bookInterview(props.id, interview)
       .then(() => transition(SHOW))
-      .catch(error => transition(ERROR_SAVE, true));
+      .catch((error) => transition(ERROR_SAVE, true));
   }
 
   function destroy(event) {
@@ -71,18 +47,6 @@ export default function Appointment(props) {
       .then(() => transition(EMPTY))
       .catch((error) => transition(ERROR_DELETE, true));
   }
-  // function destroy() {
-  //   if (mode === CONFIRM) {
-  //     transition(DELETING, true);
-
-  //     props
-  //       .cancelInterview(props.id)
-  //       .then(() => transition(EMPTY))
-  //       .catch((error) => transition(ERROR_DELETE, true));
-  //   } else {
-  //     transition(CONFIRM);
-  //   }
-  // }
 
   return (
     <Fragment>
@@ -129,10 +93,50 @@ export default function Appointment(props) {
           />
         )}
         {mode === ERROR_SAVE && (
-          <Error message="Sorry, could not save appointment" onClose={back} /> 
+          <Error message="Sorry, could not save appointment" onClose={back} />
         )}
-        {mode === ERROR_DELETE && <Error message="Could not cancel appointment" onClose={back} />}
+        {mode === ERROR_DELETE && (
+          <Error message="Could not cancel appointment" onClose={back} />
+        )}
       </article>
     </Fragment>
   );
 }
+
+// useEffect(() => {
+//   if (props.interview && mode === EMPTY) {
+//     transition(SHOW);
+//   }
+//   if (props.interview === null && mode === SHOW) {
+//     transition(EMPTY);
+//   }
+// }, [mode, transition, props.interview]);
+
+// function save(name, interviewer) {
+//   if (name && interviewer) {
+//     transition(SAVING);
+//   }
+
+//   const interview = {
+//     student: name,
+//     interviewer,
+//   };
+
+//   props
+//     .bookInterview(props.id, interview)
+//     .then(() => transition(SHOW))
+//     .catch((error) => transition(ERROR_SAVE, true));
+// }
+
+// function destroy() {
+//   if (mode === CONFIRM) {
+//     transition(DELETING, true);
+
+//     props
+//       .cancelInterview(props.id)
+//       .then(() => transition(EMPTY))
+//       .catch((error) => transition(ERROR_DELETE, true));
+//   } else {
+//     transition(CONFIRM);
+//   }
+// }

@@ -24,7 +24,6 @@ export default function Show(props) {
             className="appointment__actions-button"
             src="images/trash.png"
             alt="Delete"
-            // onClick={() => props.cancelInterview(props.id)}
             onClick={props.onDelete}
           />
         </section>

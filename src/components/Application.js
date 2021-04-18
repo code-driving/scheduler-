@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import useApplicationData from "../hooks/useApplicationData";
 
 import "components/Application.scss";
 import DayList from "./DayList";
@@ -10,6 +9,7 @@ import {
   getInterview,
   getInterviewersForDay
 } from "helpers/selectors";
+import useApplicationData from "../hooks/useApplicationData";
 
 export default function Application(props) {
   const {

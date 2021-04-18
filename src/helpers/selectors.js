@@ -1,4 +1,4 @@
-export function getAppointmentsForDay (state, day) {
+export function getAppointmentsForDay(state, day) {
   //... returns an array of appointments for that day
   let infoForDay = state.days.find((obj) => obj.name === day);
   if (!infoForDay) {
@@ -33,12 +33,16 @@ export const getInterviewersForDay = (state, day) => {
   if (!infoForDay) {
     return [];
   }
-  const interviewersForDay = infoForDay.interviewers
+  const interviewersForDay = infoForDay.interviewers;
   if (!interviewersForDay) {
-    return []
+    return [];
   }
-  const interviews = interviewersForDay.map(interviewerId => state.interviewers[interviewerId])
-  
+  const interviews = interviewersForDay.map(
+    (interviewerId) => state.interviewers[interviewerId]
+  );
+
   return interviews;
-}
+};
+
+
 

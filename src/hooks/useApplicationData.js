@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+
 export default function useApplicationData(props) {
   const [state, setState] = useState({
     day: "Monday",
@@ -8,9 +9,7 @@ export default function useApplicationData(props) {
     appointments: {},
     interviewers: {},
   });
-
-  const setDay = (day) => setState({ ...state, day });
-
+  
   useEffect(() => {
     Promise.all([
       axios.get("/api/days"),
@@ -25,7 +24,33 @@ export default function useApplicationData(props) {
       }));
     });
   }, []);
-
+  
+  // const getSpots = (state, day) => {
+  //   const specificDay = state.days.find((eachDay) => eachDay.name === day);
+  //   console.log(specificDay)
+  //   const allAppointmentsPerDay = specificDay.appointments
+    
+  //   // if (!allAppoitments) {
+  //   //   return [];
+  //   // }
+  //   console.log("allAppointmentsPerDay==>", allAppointmentsPerDay)
+  //   // const emptyAppointments = specificDay.appointments.filter(
+  //   //   (appointmentId) => state.appointments[appointmentId].interview === null
+  //   // );
+  
+  //   // return emptyAppointments.length;
+  // };
+  function getSpots (state, day) {
+    const found = state.days.find(d => d.name === day)
+    // return found.appointments.reduce((a, c) => {
+    //   return state.appointments[c].interview ? a : a + 1;
+    // }, 0)
+    debugger
+    console.log(found)
+  }
+  const setDay = (day) => setState({ ...state, day });
+  const spots = getSpots(state, state.day)
+  
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -35,16 +60,22 @@ export default function useApplicationData(props) {
       ...state.appointments,
       [id]: appointment,
     };
+    const days = state.days.map((day) => ({
+      ...day,
+      spots: getSpots(...state, day.name)
+    }));
+    
     return axios
-      .put(`/api/appointments/${id}`, { interview })
-      .then((response) => {
-        setState({
-          ...state,
-          appointments,
-        });
+    .put(`/api/appointments/${id}`, { interview })
+    .then((response) => {
+      setState({
+        ...state,
+        appointments,
+        days
       });
+    });
   }
-
+  
   function cancelInterview(id) {
     const appointment = {
       ...state.appointments[id],
@@ -59,6 +90,7 @@ export default function useApplicationData(props) {
       setState({
         ...state,
         appointments,
+        
       });
     });
   }
@@ -67,6 +99,7 @@ export default function useApplicationData(props) {
     state,
     setDay,
     bookInterview,
-    cancelInterview,
+    cancelInterview
   };
 }
+

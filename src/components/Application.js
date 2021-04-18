@@ -8,7 +8,7 @@ import Appointment from "components/Appointment";
 import {
   getAppointmentsForDay,
   getInterview,
-  getInterviewersForDay,
+  getInterviewersForDay
 } from "helpers/selectors";
 
 export default function Application(props) {

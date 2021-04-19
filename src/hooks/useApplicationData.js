@@ -18,6 +18,7 @@ const updateSpots = (state, day) => {
   specificDay.spots = numberOfSpots;
   return newState;
 };
+
 // const getSpots = (state, day) => {
 //   const specificDay = state.days.find((eachDay) => eachDay.name === day);
 
@@ -178,7 +179,6 @@ const cancelInterview = (id) => {
   //   });
   // }
 
-  
 //   return {
 //     state,
 //     setDay,

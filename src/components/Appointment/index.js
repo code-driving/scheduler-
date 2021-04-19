@@ -22,6 +22,15 @@ const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
 
 export default function Appointment(props) {
+  useEffect(() => {
+    if (props.interview && mode === EMPTY) {
+      transition(SHOW);
+    }
+    if (props.interview === null && mode === SHOW) {
+      transition(EMPTY);
+    }
+  }, [props.interview, transition, mode]);
+
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
@@ -104,13 +113,13 @@ export default function Appointment(props) {
 }
 
 // useEffect(() => {
-//   if (props.interview && mode === EMPTY) {
-//     transition(SHOW);
+//   if (interview && mode === EMPTY) {
+//    transition(SHOW);
 //   }
-//   if (props.interview === null && mode === SHOW) {
-//     transition(EMPTY);
+//   if (interview === null && mode === SHOW) {
+//    transition(EMPTY);
 //   }
-// }, [mode, transition, props.interview]);
+//  }, [interview, transition, mode]);
 
 // function save(name, interviewer) {
 //   if (name && interviewer) {

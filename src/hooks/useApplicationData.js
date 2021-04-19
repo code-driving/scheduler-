@@ -76,6 +76,7 @@ useEffect(() => {
   });
 }, []);
 
+
 const bookInterview = (id, interview) => {
   return axios
     .put(`/api/appointments/${id}`, { interview })
@@ -157,6 +158,7 @@ const cancelInterview = (id) => {
   //     });
   // }
   
+
   // function cancelInterview(id) {
   //   const appointment = {
   //     ...state.appointments[id],
@@ -175,6 +177,7 @@ const cancelInterview = (id) => {
   //     });
   //   });
   // }
+
   
 //   return {
 //     state,

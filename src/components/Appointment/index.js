@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 
 import "components/Appointment/styles.scss";
-// const classNames = require('classnames');
 import Header from "components/Appointment/Header";
 import Form from "components/Appointment/Form";
 import Empty from "components/Appointment/Empty";

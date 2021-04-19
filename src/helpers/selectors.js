@@ -44,15 +44,6 @@ export const getInterviewersForDay = (state, day) => {
   return interviews;
 };
 
-export const getSpots = (state, day) => {
-  const specificDay = state.days.find((eachDay) => eachDay.name === day);
-
-  const emptyAppointments = specificDay.appointments.filter(
-    (appointmentId) => state.appointments[appointmentId].interview === null
-  );
-
-  return emptyAppointments.length;
-};
 
 
 

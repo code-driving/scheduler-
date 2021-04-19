@@ -39,19 +39,32 @@ useEffect(() => {
       appointments: all[1].data,
       interviewers: all[2].data,
     });
+    
+    const socket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
+    socket.onopen = () => {
+      socket.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        if (data.type === SET_INTERVIEW) {
+          dispatch({
+            type: SET_INTERVIEW,
+            id: data.id,
+            interview: data.interview
+          })
+        } else {
+          dispatch({
+            type: SET_INTERVIEW,
+            id: data.id,
+            interview: null
+          })
+        }
+      }
+    }
+    // return () => {
+    //   socket.close()
+    // }
   });
 }, []);
 
-// useEffect(() => {
-//   const socket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
-//   // socket.onopen = () => {}
-//   //   // ws.onmessage = function(event) {
-//     //   socket.send("smile")
-//     // }
-    
-//   // };
-//   socket.close()
-// }, [])
 
 const bookInterview = (id, interview) => {
   return axios

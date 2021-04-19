@@ -22,6 +22,11 @@ const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
 
 export default function Appointment(props) {
+  
+  const { mode, transition, back } = useVisualMode(
+    props.interview ? SHOW : EMPTY
+  );
+  
   useEffect(() => {
     if (props.interview && mode === EMPTY) {
       transition(SHOW);
@@ -31,9 +36,6 @@ export default function Appointment(props) {
     }
   }, [props.interview, transition, mode]);
 
-  const { mode, transition, back } = useVisualMode(
-    props.interview ? SHOW : EMPTY
-  );
 
   function save(name, interviewer) {
     const interview = {

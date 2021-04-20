@@ -5,7 +5,7 @@ import {
   SET_DAY,
   SET_APPLICATION_DATA,
   SET_INTERVIEW,
-} from "../reducer/reducer.js";
+} from "../reducers/reducer.js";
 
 const updateSpots = (state, day) => {
   const newState = { ...state };

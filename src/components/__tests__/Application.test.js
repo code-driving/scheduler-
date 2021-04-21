@@ -137,7 +137,6 @@ describe("Application", () => {
     const { container, debug } = render(<Application />);
 
     await waitForElement(() => getByText(container, "Archie Cohen"));
-    const appointments = getAllByTestId(container, "appointment");
     const appointment = getAllByTestId(container, "appointment")[0];
     fireEvent.click(getByAltText(appointment, "Add"));
   
@@ -157,10 +156,6 @@ describe("Application", () => {
     ).toBeInTheDocument();
 
     fireEvent.click(queryByAltText(appointment, "Close"));
-
-    // // expect(getByText(appointment, "Save")).toBeInTheDocument();
-
-    // fireEvent.click(queryByText(appointment, "Cancel"));
 
     expect(getByText(container, "Archie Cohen")).toBeInTheDocument();
 

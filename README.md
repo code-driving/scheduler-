@@ -6,10 +6,12 @@ The client application communicates with an API server over HTTP, using the JSON
 Jest tests and cypress are used through the development of the project.
 
 ## Final Product
-!["Screenshot of a "]()
-!["Screenshot of a "]()
-!["Screenshot of a "]()
-!["Screenshot of a "]()
+!["Screenshot of an appointment form with happy Archie Cohen who passed so many tests during development process :)"](https://github.com/code-driving/scheduler-/blob/master/docs/initial.png?raw=true)
+!["Screenshot of editing the appointment"](https://github.com/code-driving/scheduler-/blob/master/docs/edit.png?raw=true)
+!["Screenshot of a form after editing name"](https://github.com/code-driving/scheduler-/blob/master/docs/after_edit.png?raw=true)
+!["Screenshot of a confirmation to delete the appointment"](https://github.com/code-driving/scheduler-/blob/master/docs/confirm_cancel.png?raw=true)
+!["Screenshot of an error while saving the appointment"](https://github.com/code-driving/scheduler-/blob/master/docs/error_save.png?raw=true)
+!["Screenshot of an error while deleting the appointment"](https://github.com/code-driving/scheduler-/blob/master/docs/error_cancel.png?raw=true)
 
 ## Dependencies
 

@@ -112,8 +112,9 @@ export default function Appointment(props) {
     </Fragment>
   );
 }
-
-// useEffect(() => {
+// Sorry, could not save appointment
+// Could not cancel appointment
+// // useEffect(() => {
 //   if (interview && mode === EMPTY) {
 //    transition(SHOW);
 //   }

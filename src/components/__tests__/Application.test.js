@@ -17,7 +17,6 @@ import {
 import axios from "axios";
 
 import Application from "components/Application";
-import reducer from "reducers/reducer";
 
 afterEach(cleanup);
 

@@ -12,6 +12,7 @@ Jest tests and cypress are used through the development of the project.
 !["Screenshot of a confirmation to delete the appointment"](https://github.com/code-driving/scheduler-/blob/master/docs/confirm_cancel.png?raw=true)
 !["Screenshot of an error while saving the appointment"](https://github.com/code-driving/scheduler-/blob/master/docs/error_save.png?raw=true)
 !["Screenshot of an error while deleting the appointment"](https://github.com/code-driving/scheduler-/blob/master/docs/error_cancel.png?raw=true)
+!["Screenshot of the app of two different users while sending a happy message"](https://github.com/code-driving/scheduler-/blob/master/docs/using_websocket.png?raw=true)
 
 ## Dependencies
 

@@ -14,7 +14,7 @@ const updateSpots = (state, day) => {
   return newState;
 };
 
-export function reducer(state, action) {
+export default function reducer(state, action) {
   switch (action.type) {
     case SET_DAY:
       return {

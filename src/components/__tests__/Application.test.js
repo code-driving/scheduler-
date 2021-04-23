@@ -147,11 +147,11 @@ describe("Application", () => {
     fireEvent.click(getByText(appointment, "Save"));
     expect(getByText(appointment, "Saving")).toBeInTheDocument();
     await waitForElement(() =>
-      getByText(appointment, "Sorry, could not save appointment")
+      getByText(appointment, "Sorry, could not save appointment. Please enter name and choose interviewer")
     );
 
     expect(
-      getByText(appointment, "Sorry, could not save appointment")
+      getByText(appointment, "Sorry, could not save appointment. Please enter name and choose interviewer")
     ).toBeInTheDocument();
 
     fireEvent.click(queryByAltText(appointment, "Close"));

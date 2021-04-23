@@ -44,18 +44,30 @@ export default function Appointment(props) {
       props
         .bookInterview(props.id, interview)
         .then(() => transition(SHOW))
-        .catch((error) => transition(ERROR_SAVE, true));
+        .catch(() => transition(ERROR_SAVE, true));
     } else {
       transition(ERROR_SAVE, true);
     }
   }
 
-  function destroy(event) {
-    transition(DELETING, true);
-    props
-      .cancelInterview(props.id)
-      .then(() => transition(EMPTY))
-      .catch((error) => transition(ERROR_DELETE, true));
+  // function destroy(event) {
+  //   transition(DELETING, true);
+  //   props
+  //     .cancelInterview(props.id)
+  //     .then(() => transition(EMPTY))
+  //     .catch((error) => transition(ERROR_DELETE, true));
+  // }
+  function destroy() {
+    if (mode === CONFIRM) {
+      transition(DELETING, true);
+
+      props
+        .cancelInterview(props.id)
+        .then(() => transition(EMPTY))
+        .catch((error) => transition(ERROR_DELETE, true));
+    } else {
+      transition(CONFIRM);
+    }
   }
 
   return (
@@ -100,7 +112,10 @@ export default function Appointment(props) {
           />
         )}
         {mode === ERROR_SAVE && (
-          <Error message="Sorry, could not save appointment" onClose={back} />
+          <Error
+            message="Sorry, could not save appointment. Please enter name and choose interviewer"
+            onClose={back}
+          />
         )}
         {mode === ERROR_DELETE && (
           <Error message="Could not cancel appointment" onClose={back} />
